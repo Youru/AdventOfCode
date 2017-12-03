@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Advent2017
+namespace Advent2017.Day01
 {
     public class Advent
     {

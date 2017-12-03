@@ -1,18 +1,15 @@
-using Advent2017;
+using Advent2017.Day02;
 using NFluent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace AdventTest
 {
     public class AdventDay2Should
     {
-        private AdventDay2 advent;
+        private AdventDay advent;
         public AdventDay2Should()
         {
-            advent = new AdventDay2();
+            advent = new AdventDay();
         }
 
 

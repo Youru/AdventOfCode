@@ -1,6 +1,5 @@
-using Advent2017;
+using Advent2017.Day01;
 using NFluent;
-using System;
 using System.Linq;
 using Xunit;
 

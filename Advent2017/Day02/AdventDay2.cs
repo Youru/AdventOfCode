@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Advent2017
+namespace Advent2017.Day02
 {
-    public class AdventDay2
+    public class AdventDay
     {
         public int GetCheksum1(string input)
         {

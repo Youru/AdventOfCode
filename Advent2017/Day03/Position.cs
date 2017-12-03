@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Advent2017.Day3
+namespace Advent2017.Day03
 {
     public class Position
     {

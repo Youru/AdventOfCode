@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using Advent2017.Day3;
+using Advent2017.Day03;
 
-namespace Advent2017
+namespace Advent2017.Day03
 {
-    public class AdventDay3
+    public class AdventDay
     {
         private Position position;
         private Direction direction;
@@ -14,7 +14,7 @@ namespace Advent2017
         private DirectionEnum currentDirection;
         private PositionStruct currentPosition;
 
-        public AdventDay3()
+        public AdventDay()
         {
             position = new Position();
             direction = new Direction();
