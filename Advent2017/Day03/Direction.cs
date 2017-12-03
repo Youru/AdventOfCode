@@ -6,7 +6,7 @@ namespace Advent2017.Day03
 {
     public class Direction
     {
-        public DirectionEnum ChooseNextDirection(DirectionEnum direction, int lastX, int lastY, Dictionary<PositionStruct, int> dictionnaryPosition)
+        public DirectionEnum ChooseNextDirection(DirectionEnum direction, int lastX, int lastY, Dictionary<string, int> dictionnaryPosition)
         {
             switch (direction)
             {
@@ -23,24 +23,18 @@ namespace Advent2017.Day03
             }
         }
 
-        private DirectionEnum GetDirectionForRight(Dictionary<PositionStruct, int> dictionnaryPosition, int lastX, int lastY)
-        {
-            return !dictionnaryPosition.ContainsKey(new PositionStruct(lastX, --lastY)) ? DirectionEnum.Top : DirectionEnum.Right;
-        }
+        private DirectionEnum GetDirectionForRight(Dictionary<string, int> dictionnaryPosition, int lastX, int lastY)
+            => !dictionnaryPosition.ContainsKey($"{lastX}:{--lastY}") ? DirectionEnum.Top : DirectionEnum.Right;
 
-        private DirectionEnum GetDirectionForTop(Dictionary<PositionStruct, int> dictionnaryPosition, int lastX, int lastY)
-        {
-            return !dictionnaryPosition.ContainsKey(new PositionStruct(--lastX, lastY)) ? DirectionEnum.Left : DirectionEnum.Top;
-        }
 
-        private DirectionEnum GetDirectionForLeft(Dictionary<PositionStruct, int> dictionnaryPosition, int lastX, int lastY)
-        {
-            return !dictionnaryPosition.ContainsKey(new PositionStruct(lastX, ++lastY)) ? DirectionEnum.Bottom : DirectionEnum.Left;
-        }
+        private DirectionEnum GetDirectionForTop(Dictionary<string, int> dictionnaryPosition, int lastX, int lastY)
+            => !dictionnaryPosition.ContainsKey($"{--lastX}:{lastY}") ? DirectionEnum.Left : DirectionEnum.Top;
 
-        private DirectionEnum GetDirectionForBottom(Dictionary<PositionStruct, int> dictionnaryPosition, int lastX, int lastY)
-        {
-            return !dictionnaryPosition.ContainsKey(new PositionStruct(++lastX, lastY)) ? DirectionEnum.Right : DirectionEnum.Bottom;
-        }
+
+        private DirectionEnum GetDirectionForLeft(Dictionary<string, int> dictionnaryPosition, int lastX, int lastY)
+            => !dictionnaryPosition.ContainsKey($"{lastX}:{++lastY}") ? DirectionEnum.Bottom : DirectionEnum.Left;
+
+        private DirectionEnum GetDirectionForBottom(Dictionary<string, int> dictionnaryPosition, int lastX, int lastY)
+            => !dictionnaryPosition.ContainsKey($"{++lastX}:{lastY}") ? DirectionEnum.Right : DirectionEnum.Bottom;
     }
 }

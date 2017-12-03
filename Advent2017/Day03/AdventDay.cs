@@ -1,35 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using Advent2017.Day03;
 
 namespace Advent2017.Day03
 {
     public class AdventDay
     {
         private Position position;
-        private Direction direction;
-        private Dictionary<PositionStruct, int> dictionnaryPosition;
-        private DirectionEnum currentDirection;
-        private PositionStruct currentPosition;
 
-        public AdventDay()
-        {
-            position = new Position();
-            direction = new Direction();
-            currentDirection = DirectionEnum.Right;
-            currentPosition = new PositionStruct(0, 0);
-            dictionnaryPosition = new Dictionary<PositionStruct, int>() { [currentPosition] = 1 };
-        }
+        public AdventDay() { position = new Position(); }
 
         public int GetStepToCarryDataFromSquareToOrigin(int square)
         {
+            var currentPosition = new PositionStruct(0, 0);
+            var dictionnaryPosition = new Dictionary<string, int>() { [currentPosition.Position] = 1 };
+
             for (var i = 2; i <= square; i++)
             {
-                GoToNextPosition();
+                currentPosition = position.GoToNextPosition(dictionnaryPosition, currentPosition);
 
-                dictionnaryPosition[currentPosition] = i;
+                dictionnaryPosition[currentPosition.Position] = i;
             }
 
             return Math.Abs(currentPosition.X) + Math.Abs(currentPosition.Y);
@@ -37,31 +27,22 @@ namespace Advent2017.Day03
 
         public int GetValueLargerThanPuzzleInput(int puzzleInput)
         {
+            var currentPosition = new PositionStruct(0, 0);
+            var dictionnaryPosition = new Dictionary<string, int>() { [currentPosition.Position] = 1 };
             var value = 1;
 
             while (value < puzzleInput)
             {
-                GoToNextPosition();
+                currentPosition = position.GoToNextPosition(dictionnaryPosition, currentPosition);
                 value = SumValueFromNeighbours(currentPosition, dictionnaryPosition);
 
-                dictionnaryPosition[currentPosition] = value;
+                dictionnaryPosition[currentPosition.Position] = value;
             }
 
             return value;
         }
-        
-        private void GoToNextPosition()
-        {
-            currentDirection = dictionnaryPosition.Count > 1 ?
-                                    direction.ChooseNextDirection(currentDirection, currentPosition.X, currentPosition.Y, dictionnaryPosition)
-                                    : DirectionEnum.Right;
-            currentPosition = position.CalculPosition(currentPosition.X, currentPosition.Y, currentDirection);
-        }
 
-        private int SumValueFromNeighbours(PositionStruct currentPosition, Dictionary<PositionStruct, int> dictionnaryPosition)
-        {
-            return currentPosition.Neighbours.Select(n => dictionnaryPosition.ContainsKey(n) ? dictionnaryPosition[n] : 0).Sum();
-        }
-
+        private int SumValueFromNeighbours(PositionStruct currentPosition, Dictionary<string, int> dictionnaryPosition)
+            => currentPosition.Neighbours.Select(n => dictionnaryPosition.ContainsKey(n) ? dictionnaryPosition[n] : 0).Sum();
     }
 }

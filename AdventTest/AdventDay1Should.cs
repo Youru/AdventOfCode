@@ -20,7 +20,7 @@ namespace AdventTest
         [InlineData("91212129", 9)]
         public void ResolvedCaptchaStep1(string input, int resultExpected)
         {
-            var result = advent.GetSameDigitnumberList(input, 1);
+            var result = advent.GetSameDigitList(input, 1);
 
             Check.That(result.Sum()).Equals(resultExpected);
         }
@@ -34,7 +34,7 @@ namespace AdventTest
         public void ResolvedCaptchaStep2(string input, int resultExpected)
         {
             var step = advent.GetStep(input);
-            var result = advent.GetSameDigitnumberList(input, step);
+            var result = advent.GetSameDigitList(input, step);
 
             Check.That(result.Sum()).Equals(resultExpected);
         }

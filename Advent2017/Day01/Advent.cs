@@ -5,24 +5,21 @@ namespace Advent2017.Day01
 {
     public class Advent
     {
-        public int GetStep(string input)
-        {
-            return input.Length / 2;
-        }
+        public int GetStep(string input) => input.Length / 2;
 
-        public List<int> GetSameDigitnumberList(string input, int step)
+        public List<int> GetSameDigitList(string input, int step)
         {
-            var SameDigitNumberList = new List<int>();
+            var SameDigitList = new List<int>();
 
             for (var i = 0; i < input.Length; i++)
             {
                 if (input[i] == (input[(i + step) % input.Length]))
                 {
-                    SameDigitNumberList.Add((int)Char.GetNumericValue(input[i]));
+                    SameDigitList.Add((int)Char.GetNumericValue(input[i]));
                 }
             }
 
-            return SameDigitNumberList;
+            return SameDigitList;
         }
     }
 }
