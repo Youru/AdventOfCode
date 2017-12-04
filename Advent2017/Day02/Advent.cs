@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Advent2017.Day02
 {
-    public class AdventDay
+    public class Advent
     {
         public int GetCheksum1(string input)
         {

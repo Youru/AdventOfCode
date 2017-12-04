@@ -6,10 +6,10 @@ namespace AdventTest
 {
     public class AdventDay2Should
     {
-        private AdventDay advent;
+        private Advent advent;
         public AdventDay2Should()
         {
-            advent = new AdventDay();
+            advent = new Advent();
         }
 
 

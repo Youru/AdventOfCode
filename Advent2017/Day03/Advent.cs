@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Advent2017.Day03
 {
-    public class AdventDay
+    public class Advent
     {
         private Position position;
 
-        public AdventDay() { position = new Position(); }
+        public Advent() { position = new Position(); }
 
         public int GetStepToCarryDataFromSquareToOrigin(int square)
         {
