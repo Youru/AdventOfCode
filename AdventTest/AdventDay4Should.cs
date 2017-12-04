@@ -1,4 +1,3 @@
-using Advent2017;
 using Advent2017.Day04;
 using NFluent;
 using Xunit;

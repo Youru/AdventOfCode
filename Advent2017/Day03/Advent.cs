@@ -6,18 +6,18 @@ namespace Advent2017.Day03
 {
     public class Advent
     {
-        private Position position;
+        private SquarePosition position;
 
-        public Advent() { position = new Position(); }
+        public Advent() { position = new SquarePosition(); }
 
         public int GetStepToCarryDataFromSquareToOrigin(int square)
         {
-            var currentPosition = new PositionStruct(0, 0);
+            var currentPosition = new Square(0, 0);
             var dictionnaryPosition = new Dictionary<string, int>() { [currentPosition.Position] = 1 };
 
             for (var i = 2; i <= square; i++)
             {
-                currentPosition = position.GoToNextPosition(dictionnaryPosition, currentPosition);
+                currentPosition = position.GetNext(dictionnaryPosition, currentPosition);
 
                 dictionnaryPosition[currentPosition.Position] = i;
             }
@@ -27,13 +27,13 @@ namespace Advent2017.Day03
 
         public int GetValueLargerThanPuzzleInput(int puzzleInput)
         {
-            var currentPosition = new PositionStruct(0, 0);
+            var currentPosition = new Square(0, 0);
             var dictionnaryPosition = new Dictionary<string, int>() { [currentPosition.Position] = 1 };
             var value = 1;
 
             while (value < puzzleInput)
             {
-                currentPosition = position.GoToNextPosition(dictionnaryPosition, currentPosition);
+                currentPosition = position.GetNext(dictionnaryPosition, currentPosition);
                 value = SumValueFromNeighbours(currentPosition, dictionnaryPosition);
 
                 dictionnaryPosition[currentPosition.Position] = value;
@@ -42,7 +42,7 @@ namespace Advent2017.Day03
             return value;
         }
 
-        private int SumValueFromNeighbours(PositionStruct currentPosition, Dictionary<string, int> dictionnaryPosition)
+        private int SumValueFromNeighbours(Square currentPosition, Dictionary<string, int> dictionnaryPosition)
             => currentPosition.Neighbours.Select(n => dictionnaryPosition.ContainsKey(n) ? dictionnaryPosition[n] : 0).Sum();
     }
 }

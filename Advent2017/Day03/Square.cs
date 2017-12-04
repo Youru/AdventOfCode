@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Advent2017.Day03
+﻿namespace Advent2017.Day03
 {
 
-    public struct PositionStruct
+    public struct Square
     {
-        public PositionStruct(int x, int y) { X = x; Y = y; Direction = DirectionEnum.Right; }
-        public PositionStruct(int x, int y, DirectionEnum direction) { X = x; Y = y; Direction = direction; }
+        public Square(int x, int y) { X = x; Y = y; Direction = DirectionEnum.Right; }
+        public Square(int x, int y, DirectionEnum direction) { X = x; Y = y; Direction = direction; }
 
         public int X { get; }
         public int Y { get; }
