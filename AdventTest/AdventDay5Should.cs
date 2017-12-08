@@ -1,4 +1,3 @@
-using Advent2017;
 using Advent2017.Day05;
 using NFluent;
 using System.Linq;
@@ -29,7 +28,7 @@ namespace AdventTest
         public void Escape_The_Maze_In_More_Step(string maze, int stepToExitExpected)
         {
             var mazeDetail = maze.Split(' ').Select(x => int.Parse(x)).ToArray();
-            var numberStep = advent.GetNumberStepToEscapeTheMazeV2(mazeDetail);
+            var numberStep = advent.GetNumberStepToEscapeTheMazeWithSpecialRule(mazeDetail);
             Check.That(numberStep).Equals(stepToExitExpected);
         }
     }

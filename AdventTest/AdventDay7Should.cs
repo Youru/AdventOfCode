@@ -24,7 +24,7 @@ namespace AdventTest
         [InlineData("fwft (72) -> ktlj, cntj, xhth", 72)]
         public void Get_Program_And_Their_Weight(string programDetail, int weightExpected)
         {
-            var detail = advent.GetProgramDetail(programDetail);
+            var detail = advent.Parse(programDetail);
 
             Check.That(detail.Weight).Equals(weightExpected);
         }
@@ -35,7 +35,7 @@ namespace AdventTest
         [InlineData("fwft (72) -> ktlj", 1)]
         public void Get_Program_And_Their_Children(string programDetail, int numberExpected)
         {
-            var detail = advent.GetProgramDetail(programDetail);
+            var detail = advent.Parse(programDetail);
 
             Check.That(detail.Children.Count).Equals(numberExpected);
         }
@@ -49,7 +49,7 @@ namespace AdventTest
 
             foreach (var line in lines)
             {
-                listProgramm.Add(advent.GetProgramDetail(line));
+                listProgramm.Add(advent.Parse(line));
             }
 
             var bottomProgram = advent.GetBottomProgram(listProgramm);
@@ -69,18 +69,18 @@ namespace AdventTest
 
             foreach (var line in lines)
             {
-                listProgram.Add(advent.GetProgramDetail(line));
+                listProgram.Add(advent.Parse(line));
             }
 
-            listProgram = advent.ListProgramUpdated(listProgram);
+            listProgram = advent.GetUpdatedPrograms(listProgram);
             var program = listProgram.First(lp => lp.Name == name);
 
             Check.That(program.Children.Sum(c => c.Weight) + program.Weight).Equals(totalWeightExpected);
         }
 
         [Theory]
-        [InlineData("tknk", 8)]
-        public void Get_The_Balance_Weight(string name, int balanceWeightExpected)
+        [InlineData(60)]
+        public void Get_The_Balance_Weight(int weightToSubstractExpected)
         {
             var reader = new ReadFile();
             var listProgram = new List<Program>();
@@ -88,14 +88,16 @@ namespace AdventTest
 
             foreach (var line in lines)
             {
-                listProgram.Add(advent.GetProgramDetail(line));
+                listProgram.Add(advent.Parse(line));
             }
 
-            listProgram = advent.ListProgramUpdated(listProgram);
-            var program = advent.GetTheUnbalancedTower(listProgram);
+            listProgram = advent.GetUpdatedPrograms(listProgram);
+            var program = advent.GetTheUnbalancedTowerProgram(listProgram);
 
-            Check.That(program.Children.Select(c => c.TotalWeight).Max() - program.Children.Select(c => c.TotalWeight).Min()).Equals(balanceWeightExpected);
+            Check.That(GetWeightToSubtract(program)).Equals(weightToSubstractExpected);
         }
 
+        private int GetWeightToSubtract(Program program)
+            => program.Children.OrderByDescending(c => c.TotalWeight).First().Weight - (program.Children.Max(c => c.TotalWeight) - program.Children.Min(c => c.TotalWeight));
     }
 }

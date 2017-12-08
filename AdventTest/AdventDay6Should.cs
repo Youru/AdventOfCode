@@ -1,7 +1,5 @@
-using Advent2017;
 using Advent2017.Day06;
 using NFluent;
-using System.Linq;
 using Xunit;
 
 namespace AdventTest

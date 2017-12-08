@@ -1,7 +1,4 @@
-﻿using Advent2017.Extension;
-using System.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Advent2017.Day05
 {
@@ -9,20 +6,15 @@ namespace Advent2017.Day05
     {
         public int GetNumberStepToEscapeTheMaze(int[] mazeDetail)
         {
-            var step = 0;
-            var index = 0;
-            while (index < mazeDetail.Length)
-            {
-                var value = mazeDetail[index];
-                index += value;
-                mazeDetail[index - value]++;
-                step++;
-            }
-
-            return step;
+            return GetNumberStepToEscapeTheMaze(mazeDetail, (value) => 1 );
         }
 
-        public int GetNumberStepToEscapeTheMazeV2(int[] mazeDetail)
+        public int GetNumberStepToEscapeTheMazeWithSpecialRule(int[] mazeDetail)
+        {
+            return GetNumberStepToEscapeTheMaze(mazeDetail, (value) => value >= 3 ? -1 : 1);
+        }
+
+        private int GetNumberStepToEscapeTheMaze(int[] mazeDetail, Func<int, int> calcul)
         {
             var step = 0;
             var index = 0;
@@ -30,7 +22,7 @@ namespace Advent2017.Day05
             {
                 var value = mazeDetail[index];
                 index += value;
-                mazeDetail[index - value] += value >= 3 ? -1 : 1;
+                mazeDetail[index - value] += calcul(value);
                 step++;
             }
 
