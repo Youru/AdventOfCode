@@ -18,34 +18,37 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Input\Day9Step1.txt">
+    <None Update="Input\Day10Step1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day8Step1.txt">
+    <None Update="Input\Day09Step1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day8ExFile.txt">
+    <None Update="Input\Day08Step1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day7Step1.txt">
+    <None Update="Input\Day08ExFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day7ExFile.txt">
+    <None Update="Input\Day07Step1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day6Step1.txt">
+    <None Update="Input\Day07ExFile.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day5Step1 .txt">
+    <None Update="Input\Day06Step1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day4Step1.txt">
+    <None Update="Input\Day05Step1 .txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day2Step1.txt">
+    <None Update="Input\Day04Step1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\Day1Step1.txt">
+    <None Update="Input\Day02Step1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\Day01Step1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="xunit.runner.json">
