@@ -31,9 +31,8 @@ namespace AdventTest
 
         [Theory]
         [InlineData("{{<!>>},{<!>},{<!>},{<a>}}", "{{},{}}")]
-        public void Get_Number_Gargabe(string stream, string streamExpected)
+        public void Get_Number_Garbage(string stream, string streamExpected)
         {
-            stream = advent.GetStreamWithCanceledGarbage(stream);
             stream = advent.GetStreamWithoutGarbage(stream);
 
             Check.That(stream).Equals(streamExpected);
@@ -48,7 +47,6 @@ namespace AdventTest
         [InlineData("{{<a!>},{<a!>},{<a!>},{<ab>}}", 3)]
         public void Get_Number_Point(string stream, int pontExpected)
         {
-            stream = advent.GetStreamWithCanceledGarbage(stream);
             stream = advent.GetStreamWithoutGarbage(stream);
             var point = advent.GetNumberPointByGroup(stream);
             Check.That(point).Equals(pontExpected);
