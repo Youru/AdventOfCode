@@ -21,8 +21,6 @@ namespace AdventTest
         [InlineData("3,4,1,5", "3,4,2,1,0")]
         public void Reverse_List_By_Input(string inputs, string hashExpected)
         {
-            int position = 0;
-            int skip = 0;
             var inputList = advent.GetInputs(inputs);
             var hash = advent.GetHash(inputList, 5, 1);
 

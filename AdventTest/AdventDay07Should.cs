@@ -7,11 +7,11 @@ using Xunit;
 
 namespace AdventTest
 {
-    public class AdventDay7Should
+    public class AdventDay07Should
     {
         private Advent advent;
 
-        public AdventDay7Should()
+        public AdventDay07Should()
         {
             advent = new Advent();
         }
@@ -45,7 +45,7 @@ namespace AdventTest
         {
             var reader = new ReadFile();
             var listProgramm = new List<Program>();
-            var lines = reader.GetContentByLine("Day7ExFile");
+            var lines = reader.GetContentByLine("Day07ExFile");
 
             foreach (var line in lines)
             {
@@ -65,7 +65,7 @@ namespace AdventTest
         {
             var reader = new ReadFile();
             var listProgram = new List<Program>();
-            var lines = reader.GetContentByLine("Day7ExFile");
+            var lines = reader.GetContentByLine("Day07ExFile");
 
             foreach (var line in lines)
             {
@@ -84,7 +84,7 @@ namespace AdventTest
         {
             var reader = new ReadFile();
             var listProgram = new List<Program>();
-            var lines = reader.GetContentByLine("Day7ExFile");
+            var lines = reader.GetContentByLine("Day07ExFile");
 
             foreach (var line in lines)
             {

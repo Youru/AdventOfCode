@@ -6,10 +6,10 @@ using Xunit;
 
 namespace AdventTest
 {
-    public class AdventDay8Should
+    public class AdventDay08Should
     {
         private Advent advent;
-        public AdventDay8Should()
+        public AdventDay08Should()
         {
             advent = new Advent();
         }
@@ -28,7 +28,7 @@ namespace AdventTest
         public void Get_Processed_Instruction()
         {
             var reader = new ReadFile();
-            var lines = reader.GetContentByLine("Day8ExFile");
+            var lines = reader.GetContentByLine("Day08ExFile");
 
             foreach (var line in lines)
             {
@@ -43,7 +43,7 @@ namespace AdventTest
         public void Get_Higher_Value_During_Process()
         {
             var reader = new ReadFile();
-            var lines = reader.GetContentByLine("Day8ExFile");
+            var lines = reader.GetContentByLine("Day08ExFile");
 
             foreach (var line in lines)
             {

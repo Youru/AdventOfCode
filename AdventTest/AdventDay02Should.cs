@@ -4,10 +4,10 @@ using Xunit;
 
 namespace AdventTest
 {
-    public class AdventDay2Should
+    public class AdventDay02Should
     {
         private Advent advent;
-        public AdventDay2Should()
+        public AdventDay02Should()
         {
             advent = new Advent();
         }
