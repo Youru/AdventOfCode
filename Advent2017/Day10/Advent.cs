@@ -1,6 +1,4 @@
-﻿using Advent2017.Extension;
-using System.Linq;
-using System;
+﻿using System.Linq;
 using System.Collections.Generic;
 
 namespace Advent2017.Day10

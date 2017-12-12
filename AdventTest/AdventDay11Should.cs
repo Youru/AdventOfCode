@@ -1,10 +1,6 @@
-using Advent2017;
 using Advent2017.Day11;
 using NFluent;
-using System.Linq;
 using Xunit;
-using System;
-using System.Collections.Generic;
 
 namespace AdventTest
 {

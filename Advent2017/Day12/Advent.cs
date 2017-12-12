@@ -1,6 +1,4 @@
-﻿using Advent2017.Extension;
-using System.Linq;
-using System;
+﻿using System.Linq;
 using System.Collections.Generic;
 
 namespace Advent2017.Day12
@@ -20,44 +18,43 @@ namespace Advent2017.Day12
             return programGroups;
         }
 
-        public Dictionary<int, bool> GetVisitedNodes(Dictionary<int, List<int>> Nodes, int beginningNode)
+        public List<int> GetNodesInSameGroup(Dictionary<int, List<int>> nodes, int beginningNode)
         {
-            var nodeVisited = new Dictionary<int, bool>() { [beginningNode] = true };
-            return GetNodesInSameGroupThanParent(nodeVisited, Nodes[beginningNode], Nodes);
+            var visitedNodes = new List<int>() { beginningNode };
+            return GetNeighbourNodes(visitedNodes, nodes[beginningNode], nodes);
         }
 
-        public int GetNumberGroup(Dictionary<int, List<int>> programGroups, int beginningNode)
+        public int GetNumberGroup(Dictionary<int, List<int>> nodes, int beginningNode)
         {
             var numberGroup = 0;
-            while (programGroups.Any())
+            while (nodes.Any())
             {
+                beginningNode = nodes.ContainsKey(beginningNode) ? beginningNode : nodes.First().Key;
+                var visitedNodes = new List<int>() { beginningNode };
                 numberGroup++;
-                var nodesVisited = new Dictionary<int, bool>() { [beginningNode] = true };
-                nodesVisited = GetNodesInSameGroupThanParent(nodesVisited, programGroups[nodesVisited.First().Key], programGroups);
-                nodesVisited.ToList().ForEach(nv => programGroups.Remove(nv.Key));
 
-                if (programGroups.Any())
-                    beginningNode = programGroups.First().Key;
-
+                visitedNodes = GetNeighbourNodes(visitedNodes, nodes[beginningNode], nodes);
+                visitedNodes.ToList().ForEach(nv => nodes.Remove(nv));
             }
 
             return numberGroup;
         }
 
-        private Dictionary<int, bool> GetNodesInSameGroupThanParent(Dictionary<int, bool> nodeVisited, List<int> nodes, Dictionary<int, List<int>> programs)
+        private List<int> GetNeighbourNodes(List<int> visitedNodes, List<int> nodes, Dictionary<int, List<int>> programs)
         {
             foreach (var node in nodes)
             {
-                if (!nodeVisited.Keys.Contains(node))
+                if (IsNodeNotVisited(visitedNodes, node))
                 {
-                    var IsNeighbourFromSamePath = programs[node].Any(p => nodeVisited.Where(n => n.Value == true).Select(n => n.Key).Contains(p));
-                    nodeVisited.Add(node, IsNeighbourFromSamePath);
-                    GetNodesInSameGroupThanParent(nodeVisited, programs[node], programs);
+                    visitedNodes.Add(node);
+                    GetNeighbourNodes(visitedNodes, programs[node], programs);
                 }
             }
 
-            return nodeVisited;
+            return visitedNodes;
         }
+
+        private bool IsNodeNotVisited(List<int> visitedNodes, int node) => !visitedNodes.Contains(node);
     }
 }
 

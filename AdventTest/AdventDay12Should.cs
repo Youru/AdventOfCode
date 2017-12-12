@@ -1,10 +1,7 @@
 using Advent2017;
 using Advent2017.Day12;
 using NFluent;
-using System.Linq;
 using Xunit;
-using System;
-using System.Collections.Generic;
 
 namespace AdventTest
 {
@@ -22,10 +19,10 @@ namespace AdventTest
             var reader = new ReadFile();
             var lines = reader.GetContentByLine("Day12ExFile");
 
-            var Nodes = advent.GetNodes(lines);
-            var visitedNodes = advent.GetVisitedNodes(Nodes, 0);
+            var nodes = advent.GetNodes(lines);
+            var nodeInSameGroup = advent.GetNodesInSameGroup(nodes, 0);
 
-            Check.That(visitedNodes.Count).Equals(6);
+            Check.That(nodeInSameGroup.Count).Equals(6);
         }
 
         [Fact]
@@ -34,8 +31,8 @@ namespace AdventTest
             var reader = new ReadFile();
             var lines = reader.GetContentByLine("Day12ExFile");
 
-            var programGroups = advent.GetNodes(lines);
-            var numberGroup = advent.GetNumberGroup(programGroups, 0);
+            var nodes = advent.GetNodes(lines);
+            var numberGroup = advent.GetNumberGroup(nodes, 0);
 
             Check.That(numberGroup).Equals(2);
         }
