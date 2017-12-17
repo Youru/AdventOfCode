@@ -13,10 +13,7 @@ namespace Advent2017.Day08
             Register = new Dictionary<string, int>();
         }
 
-        public List<string> GetInstructionParts(string expression)
-        {
-            return expression.Split(' ').ToList();
-        }
+        public List<string> GetInstructionParts(string expression) => expression.Split(' ').ToList();
 
         public int ProcessInstructionResult(List<string> instructionParts)
         {
