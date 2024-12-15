@@ -2,7 +2,7 @@ using AdventOfCode2024.Day06;
 using AdventOfCode2024Tests.Common;
 using FluentAssertions;
 
-namespace AdventOfCode2024Tests.Day04
+namespace AdventOfCode2024Tests.Day06
 {
     public class Day06Test
     {
