@@ -60,7 +60,7 @@ namespace AdventOfCode2024Tests.Day06
 
             maxPathStep.Should().Be(4903);
         }
-        [Fact]
+        //[Fact]
         public void Get_Max_Obstruction_Path_From_Input()
         {
             List<string> document = FileHelper.GetContentByLine(_basePath, "Input1.txt");

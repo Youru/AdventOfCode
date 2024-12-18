@@ -1,11 +1,4 @@
-﻿
-
-
-
-using System.Collections.Generic;
-using System.Runtime.Intrinsics.Arm;
-
-namespace AdventOfCode2024.Day07
+﻿namespace AdventOfCode2024.Day07
 {
     public class Resolve
     {
